@@ -1,0 +1,115 @@
+import tkinter
+import random
+from tkinter import *
+
+menu = tkinter.Tk()
+menu.geometry("400x300")
+menu.wm_iconbitmap("favicon.ico")
+menu.title("Menu")
+menu.configure(bg = "#D46A6A")
+
+
+def offsetFunction():
+    asciiList = ""
+    offsetWindow = tkinter.Tk()
+    offsetWindow.geometry("400x300")
+    for i in range(8):
+        randomNum = (random.randint(33,126))
+        randomAscii = chr(randomNum)
+        asciiList = asciiList + randomAscii
+    labelOffset = Label(offsetWindow, text = "Your password is {}".format(asciiList))    
+    
+    addition = 0
+    
+    labelOffset.pack()
+    
+    length = len(asciiList)
+    
+    for i in range(length):
+        num = ord(asciiList[i])
+        addition = addition + num
+    
+    addition = addition / 8
+    addition = int(addition)
+    offset = addition - 32
+    
+    fileSelect = Entry(offsetWindow)
+    offsetButton = Button(offsetWindow, text = "click to encode this file", command = load)
+    
+    fileSelect.pack()
+    offsetButton.pack()
+    
+
+def load():
+ 
+#def encrypt():
+#        encrypt = tkinter.Tk()
+#    encrypt.geometry("400x300")
+#    encrypt.wm_iconbitmap("favicon.ico")
+#    encrypt.title("Encrypt")
+#
+#   encryptEntry = tkinter.Entry(encrypt)
+#
+#    encryptEntry.pack()
+#    codedMessage = ""
+#    textLength = len(textFile)
+#    print(textLength)
+#    
+#    for i in range(textLength):
+#        convert = ord(textFile[i])
+#        if convert == 32:
+#            codedMessage = codedMessage + chr(convert)
+#        else:
+#            convert = convert + offset
+#            if convert > 126:
+#                convert = convert - 94
+#                codedMessage = codedMessage + chr(convert)
+#            else:
+#                codedMessage = codedMessage + chr(convert)
+#
+#    print(codedMessage)
+#    save(textFile, offset, codedMessage)
+    
+
+menuButton = Button(menu, text = "Encrypt", bg = "#FFAAAA", command = offsetFunction)
+   
+
+menuButton2 = Button(menu, text = "Decrypt", bg = "#FFAAAA")
+
+
+menuButton3 = Button(menu, text = "Exit", bg = "#FFAAAA")
+
+
+
+
+menuButton.pack()
+menuButton2.pack()
+menuButton3.pack()
+
+
+
+encrypt = tkinter.Tk()
+encrypt.geometry("400x300")
+encrypt.wm_iconbitmap("favicon.ico")
+encrypt.title("Encrypt")
+
+encryptEntry = tkinter.Entry(encrypt)
+
+encryptEntry.pack()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+menu.mainloop()
+#encrypt.mainloop()
